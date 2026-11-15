@@ -1,0 +1,10 @@
+version: "3.8"
+# Postgres now runs natively on Windows (see README.md) — not in Docker.
+# RabbitMQ is optional for now; the agents can be wired with direct
+# synchronous calls first and swapped to this queue later.
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI — http://localhost:15672 (guest/guest)

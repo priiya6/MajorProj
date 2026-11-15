@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: opssentinel
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/opssentinel
+    username: opssentinel
+    password: devpassword
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 8080
+
+opssentinel:
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: gemini-3.5-flash-lite
+    embedding-model: gemini-embedding-001
+  remediation:
+    confidence-threshold: 0.80
+  diagnosis:
+    min-evidence-similarity: 0.70
